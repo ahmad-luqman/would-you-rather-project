@@ -1,21 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import QuestionAnswer from './QuestionAnswer'
 
 class QuestionAnsweredList extends Component {
   render() {
-    const { answered, unanswered, authedUser, user } = this.props
+    const { answered, unanswered, user } = this.props
     return (
       <div>
         Question Unanswered List
         <br />
         <div>
           {unanswered.map(question => (
-              <div key={question.id}>
-                {question.author} asks - Would you rather
-                <div>{question.optionOne.text}</div>
-                <div>{question.optionTwo.text}</div>
-                <br />
-              </div>
+              <QuestionAnswer question={question}/>
             ))}
         </div>
         Question Answered List
