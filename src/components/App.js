@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared'
 import Signin from './Signin';
 import LeaderBoard from './LeaderBoard';
 import NewQuestion from './NewQuestion';
+import QuestionAnsweredList from './QuestionAnsweredList';
 
 class App extends Component {
   componentDidMount(){
@@ -16,6 +17,7 @@ class App extends Component {
         <Signin />
         <LeaderBoard />
         <NewQuestion />
+        <QuestionAnsweredList />
       </div>
     )
   }
