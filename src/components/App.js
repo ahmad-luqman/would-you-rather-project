@@ -24,9 +24,15 @@ class App extends Component {
               (<Signin />) :
               <div>
                 <Nav />
-                <LeaderBoard />
-                <NewQuestion />
-                <QuestionAnsweredList />
+                <Route path='/' exact component={Signin} />
+                <Route path='/leaderboard' component={LeaderBoard} />
+                <Route path='/add' component={NewQuestion} />
+                <Route path='/dashboard' component={QuestionAnsweredList} />
+                <div>
+                  <LeaderBoard />
+                  <NewQuestion />
+                  <QuestionAnsweredList />
+                </div>
               </div>
             }
           </div>
