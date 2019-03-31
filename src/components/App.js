@@ -7,6 +7,7 @@ import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
 import QuestionAnsweredList from './QuestionAnsweredList'
 import LoadingBar from 'react-redux-loading'
+import Nav from './Nav'
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
             {this.props.authedUser===null? 
               (<Signin />) :
               <div>
+                <Nav />
                 <LeaderBoard />
                 <NewQuestion />
                 <QuestionAnsweredList />
