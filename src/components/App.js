@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Signin from './Signin'
@@ -14,19 +15,21 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <LoadingBar />
-        {this.props.authedUser===null? 
-          (<Signin />) :
+      <Router>
+        <Fragment>
           <div>
-            <LeaderBoard />
-            <NewQuestion />
-            <QuestionAnsweredList />
+            <LoadingBar />
+            {this.props.authedUser===null? 
+              (<Signin />) :
+              <div>
+                <LeaderBoard />
+                <NewQuestion />
+                <QuestionAnsweredList />
+              </div>
+            }
           </div>
-        }
-        
-        
-      </div>
+        </Fragment>
+      </Router>
     )
   }
 }
