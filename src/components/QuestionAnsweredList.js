@@ -35,8 +35,7 @@ function mapStateToProps ({ questions, users, authedUser }) {
   let user
   let answered = []
   let unanswered = []
-  //hardcode TODO fix 
-  authedUser = 'tylermcginnis'
+
   if (authedUser !== null) {
     user = users[authedUser]
   }

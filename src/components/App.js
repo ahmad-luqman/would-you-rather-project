@@ -14,13 +14,25 @@ class App extends Component {
     return (
       <div>
         Starter code
-        <Signin />
-        <LeaderBoard />
-        <NewQuestion />
-        <QuestionAnsweredList />
+        {this.props.authedUser===null? 
+          (<Signin />) :
+          <div>
+            <LeaderBoard />
+            <NewQuestion />
+            <QuestionAnsweredList />
+          </div>
+        }
+        
+        
       </div>
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps ({ authedUser }) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(App)

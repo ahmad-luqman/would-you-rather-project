@@ -3,16 +3,20 @@ import { receiveUsers, addQuestionToUser, addAnswerToUser } from '../actions/use
 import { receiveQuestions, handleAddQuestion, answerQuestion } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 
-const AUTHED_ID = 'tylermcginnis'
-
 export function handleInitialData () {
   return (dispatch) => {
     return getInitialData()
       .then(({ users, questions }) => {
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
-        dispatch(setAuthedUser(AUTHED_ID))
+        dispatch(setAuthedUser(null))
       })
+  }
+}
+
+export function authenticateUser (authedUser) {
+  return (dispatch) => {
+    dispatch(setAuthedUser(authedUser))
   }
 }
 

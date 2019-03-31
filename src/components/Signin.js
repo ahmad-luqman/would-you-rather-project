@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { authenticateUser } from '../actions/shared'
 
 class Signin extends Component {
   state={
@@ -11,15 +12,15 @@ class Signin extends Component {
       selectedUser: user
     });
   }
-  handleSubmit = (e) => {
-
+  authenticate = (e) => {
+    this.props.dispatch(authenticateUser(this.state.selectedUser))
   }
   render () {
     const { users } = this.props;
     const { selectedUser } = this.state
     return (
       <div>
-        <form>
+        <form onSubmit={this.authenticate}>
           <select
             value={selectedUser}
             onChange={this.handleChange}>
@@ -27,7 +28,7 @@ class Signin extends Component {
               Choose a User
             </option>
             {users && Object.keys(users).map(user => (
-              <option key={users[user].name} value={users[user].name}>
+              <option key={user} value={user}>
                 {users[user].name}
               </option>
               ))
