@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import Signin from './Signin';
-import LeaderBoard from './LeaderBoard';
-import NewQuestion from './NewQuestion';
-import QuestionAnsweredList from './QuestionAnsweredList';
+import Signin from './Signin'
+import LeaderBoard from './LeaderBoard'
+import NewQuestion from './NewQuestion'
+import QuestionAnsweredList from './QuestionAnsweredList'
+import LoadingBar from 'react-redux-loading'
+
 
 class App extends Component {
   componentDidMount(){
@@ -13,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        Starter code
+        <LoadingBar />
         {this.props.authedUser===null? 
           (<Signin />) :
           <div>
