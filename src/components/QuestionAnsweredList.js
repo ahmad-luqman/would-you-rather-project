@@ -11,7 +11,7 @@ class QuestionAnsweredList extends Component {
         <br />
         <div>
           {unanswered.map(question => (
-              <QuestionAnswer question={question}/>
+              <QuestionAnswer key={question.id} question={question}/>
             ))}
         </div>
         Question Answered List

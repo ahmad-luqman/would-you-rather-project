@@ -1,6 +1,6 @@
-import { getInitialData, saveQuestion } from '../utils/api'
-import { receiveUsers, addQuestionToUser } from '../actions/users'
-import { receiveQuestions, handleAddQuestion } from '../actions/questions'
+import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
+import { receiveUsers, addQuestionToUser, addAnswerToUser } from '../actions/users'
+import { receiveQuestions, handleAddQuestion, answerQuestion } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 
 const AUTHED_ID = 'tylermcginnis'
@@ -26,5 +26,20 @@ export function addQuestionAction (auth, optOne, optTwo) {
       dispatch(addQuestionToUser(question))
       dispatch(handleAddQuestion(question))
     })
+  }
+}
+
+export function handleAnswerQuestion (auth, qid, option) {
+  const data = {
+    authedUser: auth,
+    qid,
+    answer: option
+  }
+  return (dispatch) => {
+    saveQuestionAnswer(data)
+      .then(() => {
+        dispatch(answerQuestion(auth, qid, option))
+        dispatch(addAnswerToUser(auth, qid, option))
+      })
   }
 }
