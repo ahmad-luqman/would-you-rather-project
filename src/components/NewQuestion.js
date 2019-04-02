@@ -11,11 +11,11 @@ class NewQuestion extends Component {
   }
   render() {
     return (
-      <div>
-        <div>Create New Question</div>
-        <div>Complete the question:</div>
-        <div>Would you rather ..</div>
-        <form onSubmit={this.addQuestion}>
+      <div className="question">
+        <div className="question">Create New Question</div>
+        <div className="question">Complete the question:</div>
+        <div className="question">Would you rather ..</div>
+        <form className="question" onSubmit={this.addQuestion}>
           <input name="firstQuestion" type="text" />
           <br />
           <div>OR</div>
