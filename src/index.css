@@ -47,6 +47,10 @@ a {
   font-weight: bold;
 }
 
+.unactive {
+  font-weight: normal;
+}
+
 .nav ul {
   display: flex;
   flex-direction: row;

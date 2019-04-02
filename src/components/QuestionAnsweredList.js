@@ -8,29 +8,61 @@ class QuestionAnsweredList extends Component {
     if(this.props.authedUser === null)
       this.props.history.push('/')
   }
+  state = {
+    questionUnanswered: true
+  }
+
+  toggleQuestionType = () => {
+    this.setState({
+      questionUnanswered: !this.state.questionUnanswered
+    })
+  }
+
   render() {
     const { answered, unanswered, user } = this.props
+    const { questionUnanswered } = this.state
     return (
       <div>
-        Question Unanswered List
-        <br />
-        <div>
-          {unanswered.map(question => (
-              <QuestionAnswer key={question.id} question={question}/>
-            ))}
-        </div>
-        Question Answered List
-        <br />
-        <div>
-          {answered.map(question => (
-              <Link to={`/results/${question.id}`} key={question.id}>
-                {question.author} asks - Would you rather
-                <div>{question.optionOne.text}{user.answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
-                <div>{question.optionTwo.text}{user.answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
-                <br />
-              </Link>
-            ))}
-        </div>
+        <nav className='nav'>
+          <ul>
+            <li
+              onClick={this.toggleQuestionType}
+              className={ this.state.questionUnanswered ? 'active' : 'unactive'}>
+                Unanswered Questions
+            </li>
+            <li
+              onClick={this.toggleQuestionType}
+              className={!this.state.questionUnanswered ? 'active' : 'unactive'}>
+                Answered Questions
+            </li>
+          </ul>
+        </nav>
+        {questionUnanswered?
+          <div>
+            Question Unanswered List
+            <br />
+            <div>
+              {unanswered.map(question => (
+                  <QuestionAnswer key={question.id} question={question}/>
+                ))}
+            </div>
+          </div>
+          :
+          <div>
+            Question Answered List
+            <br />
+            <div>
+              {answered.map(question => (
+                  <Link to={`/results/${question.id}`} key={question.id}>
+                    {question.author} asks - Would you rather
+                    <div>{question.optionOne.text}{user.answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
+                    <div>{question.optionTwo.text}{user.answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
+                    <br />
+                  </Link>
+                ))}
+            </div>
+          </div>
+        }
       </div>
     )
   }
