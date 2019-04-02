@@ -6,7 +6,7 @@ import Home from './Home'
 import Signin from './Signin'
 import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
-import QuestionAnsweredList from './QuestionAnsweredList'
+import Dashboard from './Dashboard'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
 import QuestionResults from './QuestionResults'
@@ -34,17 +34,11 @@ class App extends Component {
                      <Route path='/home' component={Home} />
                      <Route path='/leaderboard' component={LeaderBoard} />
                      <Route path='/add' component={NewQuestion} />
-                     <Route path='/dashboard' component={QuestionAnsweredList} />
+                     <Route path='/dashboard' component={Dashboard} />
                      <Route path='/results/:id' exact component={QuestionResults} />
                      <Route exact path='/signout' component={Signout} />
                   </div>
                 }
-{/* 
-                <div>
-                  <LeaderBoard />
-                  <NewQuestion />
-                  <QuestionAnsweredList />
-                </div> */}
               </div>
             }
           </div>

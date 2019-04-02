@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import QuestionAnsweredList from './QuestionAnsweredList';
+import Dashboard from './Dashboard';
 
 class Home extends Component {
   render() {
     return (
-      <QuestionAnsweredList />
+      <Dashboard />
     )
   }
 }

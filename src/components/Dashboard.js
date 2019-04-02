@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import QuestionAnswer from './QuestionAnswer'
 import { Link } from 'react-router-dom'
 
-class QuestionAnsweredList extends Component {
+class Dashboard extends Component {
   componentDidMount(){
     if(this.props.authedUser === null)
       this.props.history.push('/')
@@ -92,4 +92,4 @@ function mapStateToProps ({ questions, users, authedUser }) {
   }
 }
 
-export default connect(mapStateToProps)(QuestionAnsweredList)
+export default connect(mapStateToProps)(Dashboard)
