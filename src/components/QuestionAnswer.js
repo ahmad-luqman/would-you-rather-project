@@ -19,8 +19,8 @@ class QuestionAnswer extends Component {
   render () {
     const { question } = this.props;
     return (
-      <div>
-        <h1>Would You Rather </h1>
+      <div className="question">
+        <h3>Would You Rather </h3>
         <form onSubmit={this.answerQuestion}>
           <p>Would You Rather:</p>
           <div>

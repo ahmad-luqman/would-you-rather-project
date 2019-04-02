@@ -53,7 +53,7 @@ class Dashboard extends Component {
             <br />
             <div>
               {answered.map(question => (
-                  <Link to={`/results/${question.id}`} key={question.id}>
+                  <Link to={`/results/${question.id}`} key={question.id} className="question">
                     {question.author} asks - Would you rather
                     <div>{question.optionOne.text}{user.answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
                     <div>{question.optionTwo.text}{user.answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
