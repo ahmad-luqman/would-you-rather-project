@@ -8,7 +8,8 @@ import NewQuestion from './NewQuestion'
 import QuestionAnsweredList from './QuestionAnsweredList'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
-import QuestionResults from './QuestionResults';
+import QuestionResults from './QuestionResults'
+import Signout from './Signout'
 
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
       <Router>
         <Fragment>
           <LoadingBar />
-          <div>
+          <div className="container">
             {this.props.authedUser===null? 
               (<Signin />) :
               <div>
@@ -30,6 +31,8 @@ class App extends Component {
                 <Route path='/add' component={NewQuestion} />
                 <Route path='/dashboard' component={QuestionAnsweredList} />
                 <Route path='/results/:id' exact component={QuestionResults} />
+                <Route exact path='/signout' component={Signout} />
+
                 <div>
                   <LeaderBoard />
                   <NewQuestion />

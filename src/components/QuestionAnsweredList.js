@@ -4,6 +4,10 @@ import QuestionAnswer from './QuestionAnswer'
 import { Link } from 'react-router-dom'
 
 class QuestionAnsweredList extends Component {
+  componentDidMount(){
+    if(this.props.authedUser === null)
+      this.props.history.push('/')
+  }
   render() {
     const { answered, unanswered, user } = this.props
     return (

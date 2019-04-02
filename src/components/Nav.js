@@ -16,8 +16,8 @@ export default function Nav () {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/logout' activeClassName='active'>
-            Logout
+          <NavLink to='/signout' activeClassName='active'>
+            Sign out
           </NavLink>
         </li>
       </ul>
