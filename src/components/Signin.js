@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { authenticateUser } from '../actions/shared'
+import { withRouter } from 'react-router-dom'
+
 
 class Signin extends Component {
   state={
@@ -14,6 +16,7 @@ class Signin extends Component {
   }
   authenticate = (e) => {
     this.props.dispatch(authenticateUser(this.state.selectedUser))
+    this.props.history.push("/home")
   }
   render () {
     const { users } = this.props;
@@ -53,4 +56,4 @@ function mapStateToProps({authedUser, users}) {
   }
 }
 
-export default connect(mapStateToProps)(Signin)
+export default withRouter(connect(mapStateToProps)(Signin))
