@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionAnswer from './QuestionAnswer'
+import { Link } from 'react-router-dom'
 
 class QuestionAnsweredList extends Component {
   render() {
@@ -18,12 +19,12 @@ class QuestionAnsweredList extends Component {
         <br />
         <div>
           {answered.map(question => (
-              <div key={question.id}>
+              <Link to={`/results/${question.id}`} key={question.id}>
                 {question.author} asks - Would you rather
                 <div>{question.optionOne.text}{user.answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
                 <div>{question.optionTwo.text}{user.answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
                 <br />
-              </div>
+              </Link>
             ))}
         </div>
       </div>
