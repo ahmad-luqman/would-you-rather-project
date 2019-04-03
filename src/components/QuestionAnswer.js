@@ -21,37 +21,39 @@ class QuestionAnswer extends Component {
     return (
       <div className="question">
         <h3>Would You Rather </h3>
-        <form onSubmit={this.answerQuestion}>
+        <form>
           <p>Would You Rather:</p>
           <div>
             <input
               type="radio"
-              id="optionOne"
               name="wouldyourather"
               value="optionOne"
               onChange={(e) => this.changeOption(e.target.value)}
               checked />
-            <label htmlFor="optionOne">{question.optionOne.text}</label>
+            {question.optionOne.text}
           </div>
           <div>
             <input
               type="radio"
-              id="optionTwo"
               name="wouldyourather"
               value="optionTwo"
               onChange={(e) => this.changeOption(e.target.value)} />
-            <label htmlFor="optionTwo">{question.optionTwo.text}</label>
+            {question.optionTwo.text}
           </div>
-          <input type="submit" value="Submit" />
         </form>
+        <button onClick={this.answerQuestion}>
+          Submit
+        </button>
       </div>
     )
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ authedUser, questions, users }) {
   return {
-    authedUser
+    authedUser,
+    questions,
+    users
   }
 }
 

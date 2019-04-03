@@ -18,11 +18,11 @@ export default function users (state = {}, action) {
     case ADD_ANSWER_TO_USER:
       return {
         ...state,
-        [action.auth]: {
-          ...state[action.auth],
+        [action.authedUser]: {
+          ...state[action.authedUser],
           answers: {
-            ...state[action.auth].answers,
-            [action.qid]: action.option
+            ...state[action.authedUser].answers,
+            [action.qid]: action.answer
           }
         }
       }
