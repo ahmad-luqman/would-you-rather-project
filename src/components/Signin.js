@@ -16,7 +16,7 @@ class Signin extends Component {
   }
   authenticate = (e) => {
     this.props.dispatch(authenticateUser(this.state.selectedUser))
-    this.props.history.push("/home")
+    this.props.history.push("/dashboard")
   }
   render () {
     const { users } = this.props;
