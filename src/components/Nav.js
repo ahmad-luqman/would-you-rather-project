@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Avatar from './Avatar'
 
 export default function Nav () {
   return (
@@ -22,6 +23,7 @@ export default function Nav () {
         </li>
         <li className="nav-item">
           <NavLink to='/signout' activeClassName='active' className="nav-link">
+            <Avatar />
             Sign out
           </NavLink>
         </li>
