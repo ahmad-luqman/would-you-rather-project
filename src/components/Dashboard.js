@@ -27,12 +27,12 @@ class Dashboard extends Component {
           <ul>
             <li
               onClick={this.toggleQuestionType}
-              className={ this.state.questionUnanswered ? 'active' : 'unactive'}>
+              className={ this.state.questionUnanswered ? 'active btn' : 'unactive'}>
                 Unanswered Questions
             </li>
             <li
               onClick={this.toggleQuestionType}
-              className={!this.state.questionUnanswered ? 'active' : 'unactive'}>
+              className={!this.state.questionUnanswered ? 'active btn' : 'unactive'}>
                 Answered Questions
             </li>
           </ul>

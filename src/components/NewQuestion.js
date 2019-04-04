@@ -12,16 +12,18 @@ class NewQuestion extends Component {
   render() {
     return (
       <div className="question">
-        <div className="question">Create New Question</div>
-        <div className="question">Complete the question:</div>
-        <div className="question">Would you rather ..</div>
-        <form className="question" onSubmit={this.addQuestion}>
-          <input name="firstQuestion" type="text" />
+        <div className="text-center font-weight-bold">Create New Question</div>
+        <br />
+        <div className="">Complete the question.</div>
+        <br />
+        <div className="">Would you rather ..</div>
+        <form className="" onSubmit={this.addQuestion}>
+          <input name="firstQuestion" type="text" className="form-control" />
           <br />
-          <div>OR</div>
-          <input name="secondQuestion" type="text" />
+          <span className="text-center font-italic">OR</span>
+          <input name="secondQuestion" type="text"  className="form-control" />
           <br />
-          <input type="submit" />
+          <input className="btn btn-primary" type="submit" />
         </form>
       </div>
     )

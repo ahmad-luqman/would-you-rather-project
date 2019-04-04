@@ -20,9 +20,9 @@ class QuestionAnswer extends Component {
     const { question } = this.props;
     return (
       <div className="question">
-        <h3>Would You Rather </h3>
+        <h4 className="text-center">Would You Rather </h4>
+        <br />
         <form>
-          <p>Would You Rather:</p>
           <div>
             <input
               type="radio"
@@ -40,10 +40,12 @@ class QuestionAnswer extends Component {
               onChange={(e) => this.changeOption(e.target.value)} />
             {question.optionTwo.text}
           </div>
+
+          <br />
+          <button onClick={this.answerQuestion} className="btn btn-primary">
+            Submit
+          </button>
         </form>
-        <button onClick={this.answerQuestion}>
-          Submit
-        </button>
       </div>
     )
   }

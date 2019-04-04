@@ -22,22 +22,25 @@ class Signin extends Component {
     const { users } = this.props;
     const { selectedUser } = this.state
     return (
-      <div>
-        <form onSubmit={this.authenticate}>
-          <select
+      <div className="row ">
+        <form onSubmit={this.authenticate} className="col-md-12">
+          <h1 className="display-4 jumbotron bg-white text-center">
+            Would<br />You<br/>Rather
+          </h1>
+          <select className="offset-md-3 col-md-5 custom-select"
             value={selectedUser}
             onChange={this.handleChange}>
             <option key="" value = "">
               Choose a User
             </option>
             {users && Object.keys(users).map(user => (
-              <option key={user} value={user}>
+              <option key={user} value={user} className="dropdown-item">
                 {users[user].name}
               </option>
               ))
             }
           </select>
-          <button
+          <button className="col-md-1 btn btn-primary ml-1"
             disabled={selectedUser === ''}
             type="submit">
             Sign In

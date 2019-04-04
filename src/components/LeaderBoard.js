@@ -7,7 +7,7 @@ class LeaderBoard extends Component {
       return (
           <div> 
               <br />
-              <table>
+              <table className="table">
                 <thead>
                   <tr>
                     <th>Rank</th>
