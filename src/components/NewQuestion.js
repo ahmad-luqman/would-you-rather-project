@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { addQuestionAction } from '../actions/shared'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class NewQuestion extends Component {
   addQuestion = (e) => {
@@ -8,6 +9,7 @@ class NewQuestion extends Component {
     let optOne = e.target[0].value
     let optTwo = e.target[1].value
     this.props.dispatch(addQuestionAction(this.props.authedUser, optOne, optTwo))
+    this.props.history.push("/dashboard")
   }
   render() {
     return (
@@ -37,4 +39,4 @@ function mapStateToProps ({ authedUser, questions }) {
   }
 }
 
-export default connect(mapStateToProps)(NewQuestion)
+export default withRouter(connect(mapStateToProps)(NewQuestion))

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { handleAnswerQuestion } from '../actions/shared'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class QuestionAnswer extends Component {
   state = {
@@ -15,6 +16,7 @@ class QuestionAnswer extends Component {
     const { option } = this.state
     const { authedUser, question } = this.props
     this.props.dispatch(handleAnswerQuestion( authedUser, question.id, option ))
+    this.props.history.push(`/results/${question.id}`)
   }
   render () {
     const { question } = this.props;
@@ -40,12 +42,11 @@ class QuestionAnswer extends Component {
               onChange={(e) => this.changeOption(e.target.value)} />
             {question.optionTwo.text}
           </div>
-
           <br />
-          <button onClick={this.answerQuestion} className="btn btn-primary">
+        </form>
+        <button onClick={this.answerQuestion} className="btn btn-primary">
             Submit
           </button>
-        </form>
       </div>
     )
   }
@@ -59,4 +60,4 @@ function mapStateToProps ({ authedUser, questions, users }) {
   }
 }
 
-export default connect(mapStateToProps)(QuestionAnswer)
+export default withRouter(connect(mapStateToProps)(QuestionAnswer))
