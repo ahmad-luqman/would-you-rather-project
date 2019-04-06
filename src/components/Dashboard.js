@@ -12,9 +12,15 @@ class Dashboard extends Component {
     questionUnanswered: true
   }
 
-  toggleQuestionType = () => {
+  setQuestionUnanswered = () => {
     this.setState({
-      questionUnanswered: !this.state.questionUnanswered
+      questionUnanswered: true
+    })
+  }
+
+  setQuestionAnswered = () => {
+    this.setState({
+      questionUnanswered: false
     })
   }
 
@@ -26,12 +32,12 @@ class Dashboard extends Component {
         <nav className='nav'>
           <ul>
             <li
-              onClick={this.toggleQuestionType}
+              onClick={this.setQuestionUnanswered}
               className={ this.state.questionUnanswered ? 'active btn' : 'unactive'}>
                 Unanswered Questions
             </li>
             <li
-              onClick={this.toggleQuestionType}
+              onClick={this.setQuestionAnswered}
               className={!this.state.questionUnanswered ? 'active btn' : 'unactive'}>
                 Answered Questions
             </li>
