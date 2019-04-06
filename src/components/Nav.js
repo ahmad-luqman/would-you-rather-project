@@ -1,9 +1,14 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react'
+import { withRouter, NavLink, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import Avatar from './Avatar'
 
-export default function Nav () {
-  return (
+class Nav extends Component {
+  render(){
+    if (this.props.authedUser === null) {
+      return <Redirect to='/signin' />
+    }
+    return (
     <nav className='navbar navbar-expand-lg navbar navbar-dark bg-primary'>
       <ul className="navbar-nav">
         <li className="nav-item">
@@ -28,6 +33,18 @@ export default function Nav () {
           </NavLink>
         </li>
       </ul>
-    </nav>
-  )
+    </nav>)
+  }
 }
+
+function mapStateToProps ({ users, authedUser }) {
+  if(users[authedUser] !== undefined ){
+      return {
+          authedUser: authedUser,
+          name: users[authedUser].name,
+          avatar: users[authedUser].avatarURL,
+      } 
+  }
+  return {authedUser: ""}
+}
+export default withRouter(connect(mapStateToProps)(Nav))

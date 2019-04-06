@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Nav from './Nav'
 import { NavLink } from 'react-router-dom'
 
 class Dashboard extends Component {
@@ -28,17 +29,18 @@ class Dashboard extends Component {
     const { questionUnanswered } = this.state
     return (
       <div>
-        <nav className='nav'>
-          <ul>
+        <Nav />
+        <nav>
+          <ul className='nav'>
             <li
               onClick={this.setQuestionUnanswered}
-              className={ this.state.questionUnanswered ? 'active btn' : 'unactive'}>
-                Unanswered Questions
+              className='nav-item'>
+                <div className="nav-link" href="#">Unanswered Questions</div>
             </li>
             <li
               onClick={this.setQuestionAnswered}
-              className={!this.state.questionUnanswered ? 'active btn' : 'unactive'}>
-                Answered Questions
+              className='nav-item'>
+                <div className="nav-link" href="#">Answered Questions</div>
             </li>
           </ul>
         </nav>
@@ -48,7 +50,7 @@ class Dashboard extends Component {
             <br />
             <div>
               {unanswered.map(question => (
-                <div className="question">
+                <div key={question.id} className="question">
                   <img src={users[question.author].avatarURL}
                     alt='avatar'
                     className='avatar' />
@@ -69,7 +71,7 @@ class Dashboard extends Component {
             <br />
             <div>
               {answered.map(question => (
-                  <div className="question">
+                  <div key={question.id} className="question">
                     <img src={users[question.author].avatarURL}
                       alt='avatar'
                       className='avatar' />

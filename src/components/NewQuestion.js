@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { addQuestionAction } from '../actions/shared'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import Nav from './Nav'
 
 class NewQuestion extends Component {
   addQuestion = (e) => {
@@ -13,20 +14,23 @@ class NewQuestion extends Component {
   }
   render() {
     return (
-      <div className="question">
-        <div className="text-center font-weight-bold">Create New Question</div>
-        <br />
-        <div className="">Complete the question.</div>
-        <br />
-        <div className="">Would you rather ..</div>
-        <form className="" onSubmit={this.addQuestion}>
-          <input name="firstQuestion" type="text" className="form-control" />
+      <div>
+        <Nav />
+        <div className="question">
+          <div className="text-center font-weight-bold">Create New Question</div>
           <br />
-          <span className="text-center font-italic">OR</span>
-          <input name="secondQuestion" type="text"  className="form-control" />
+          <div className="">Complete the question.</div>
           <br />
-          <input className="btn btn-primary" type="submit" />
-        </form>
+          <div className="">Would you rather ..</div>
+          <form className="" onSubmit={this.addQuestion}>
+            <input name="firstQuestion" type="text" className="form-control" />
+            <br />
+            <span className="text-center font-italic">OR</span>
+            <input name="secondQuestion" type="text"  className="form-control" />
+            <br />
+            <input className="btn btn-primary" type="submit" />
+          </form>
+        </div>
       </div>
     )
   }

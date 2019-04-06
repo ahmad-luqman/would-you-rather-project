@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ProgressBar from './ProgressBar';
+import ProgressBar from './ProgressBar'
+import Nav from './Nav'
 
 class QuestionResults extends Component {
   render () {
@@ -18,16 +19,19 @@ class QuestionResults extends Component {
 
     return (
       <div>
-        <h2>Asked by {authorName}:</h2>
-        <img src={avatarURL}
-                  alt='avatar'
-                  className='avatar' />
-        <div>Would you rather {question.optionOne.text}?</div>
-        <ProgressBar percentage={optionOnePercentage} />
-        <div>{optionOneCount} out of {totalCount} votes</div>
-        <div>Would you rather {question.optionTwo.text}?</div>
-        <ProgressBar percentage={optionTwoPercentage} />
-        <div>{optionTwoCount} out of {totalCount} votes</div>
+        <Nav />
+        <div>
+          <h2>Asked by {authorName}:</h2>
+          <img src={avatarURL}
+                    alt='avatar'
+                    className='avatar' />
+          <div>Would you rather {question.optionOne.text}?</div>
+          <ProgressBar percentage={optionOnePercentage} />
+          <div>{optionOneCount} out of {totalCount} votes</div>
+          <div>Would you rather {question.optionTwo.text}?</div>
+          <ProgressBar percentage={optionTwoPercentage} />
+          <div>{optionTwoCount} out of {totalCount} votes</div>
+        </div>
       </div>
     )
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { handleAnswerQuestion } from '../actions/shared'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import Nav from './Nav'
 
 class QuestionAnswer extends Component {
   state = {
@@ -23,32 +24,35 @@ class QuestionAnswer extends Component {
     const { id, questions } = this.props;
     const question = questions[id]
     return (
-      <div className="question">
-        <h4 className="text-center">Would You Rather </h4>
-        <br />
-        <form>
-          <div>
-            <input
-              type="radio"
-              name="wouldyourather"
-              value="optionOne"
-              onChange={(e) => this.changeOption(e.target.value)}
-              checked />
-            {question.optionOne.text}
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="wouldyourather"
-              value="optionTwo"
-              onChange={(e) => this.changeOption(e.target.value)} />
-            {question.optionTwo.text}
-          </div>
+      <div>
+        <Nav />
+        <div className="question">
+          <h4 className="text-center">Would You Rather </h4>
           <br />
-        </form>
-        <button onClick={this.answerQuestion} className="btn btn-primary">
-            Submit
-          </button>
+          <form>
+            <div>
+              <input
+                type="radio"
+                name="wouldyourather"
+                value="optionOne"
+                onChange={(e) => this.changeOption(e.target.value)}
+                checked />
+              {question.optionOne.text}
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="wouldyourather"
+                value="optionTwo"
+                onChange={(e) => this.changeOption(e.target.value)} />
+              {question.optionTwo.text}
+            </div>
+            <br />
+          </form>
+          <button onClick={this.answerQuestion} className="btn btn-primary">
+              Submit
+            </button>
+        </div>
       </div>
     )
   }
