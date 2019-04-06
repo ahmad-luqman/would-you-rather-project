@@ -24,7 +24,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { answered, unanswered, user } = this.props
+    const { answered, unanswered, users } = this.props
     const { questionUnanswered } = this.state
     return (
       <div>
@@ -49,9 +49,12 @@ class Dashboard extends Component {
             <div>
               {unanswered.map(question => (
                 <div className="question">
+                  <img src={users[question.author].avatarURL}
+                    alt='avatar'
+                    className='avatar' />
                   <p>{question.author} asks - Would you rather</p>
-                  <div>{question.optionOne.text}{user.answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
-                  <div>{question.optionTwo.text}{user.answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
+                  <div>{question.optionOne.text}{users[question.author].answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
+                  <div>{question.optionTwo.text}{users[question.author].answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
                   <br />
                   <NavLink to={`/questions/${question.id}`} key={question.id}>
                     Answer Question
@@ -67,9 +70,12 @@ class Dashboard extends Component {
             <div>
               {answered.map(question => (
                   <div className="question">
+                    <img src={users[question.author].avatarURL}
+                      alt='avatar'
+                      className='avatar' />
                     <p>{question.author} asks - Would you rather</p>
-                    <div>{question.optionOne.text}{user.answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
-                    <div>{question.optionTwo.text}{user.answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
+                    <div>{question.optionOne.text}{users[question.author].answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
+                    <div>{question.optionTwo.text}{users[question.author].answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
                     <br />
                     <NavLink to={`/results/${question.id}`} key={question.id}>
                       View Poll
@@ -104,6 +110,7 @@ function mapStateToProps ({ questions, users, authedUser }) {
     answered,
     unanswered,
     authedUser,
+    users,
     user
   }
 }
