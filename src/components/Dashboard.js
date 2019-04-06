@@ -30,24 +30,26 @@ class Dashboard extends Component {
     return (
       <div>
         <Nav />
-        <nav>
-          <ul className='nav'>
+        <nav className='navbar navbar-expand-lg navbar-light bg-primary'>
+          <ul className='navbar-nav'>
             <li
               onClick={this.setQuestionUnanswered}
               className='nav-item'>
-                <div className="nav-link" href="#">Unanswered Questions</div>
+                <div activeClassName='active' className="nav-link" href="#">
+                  Unanswered Questions
+                </div>
             </li>
             <li
               onClick={this.setQuestionAnswered}
               className='nav-item'>
-                <div className="nav-link" href="#">Answered Questions</div>
+                <div activeClassName='active' className="nav-link" href="#">
+                  Answered Questions
+                </div>
             </li>
           </ul>
         </nav>
         {questionUnanswered?
           <div>
-            Question Unanswered List
-            <br />
             <div>
               {unanswered.map(question => (
                 <div key={question.id} className="question">
@@ -55,8 +57,8 @@ class Dashboard extends Component {
                     alt='avatar'
                     className='avatar' />
                   <p>{question.author} asks - Would you rather</p>
-                  <div>{question.optionOne.text}{users[question.author].answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
-                  <div>{question.optionTwo.text}{users[question.author].answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
+                  <div>{question.optionOne.text}</div>
+                  <div>{question.optionTwo.text}</div>
                   <br />
                   <NavLink to={`/questions/${question.id}`} key={question.id}>
                     Answer Question
@@ -67,8 +69,6 @@ class Dashboard extends Component {
           </div>
           :
           <div>
-            Question Answered List
-            <br />
             <div>
               {answered.map(question => (
                   <div key={question.id} className="question">
@@ -100,14 +100,13 @@ function mapStateToProps ({ questions, users, authedUser }) {
   if (authedUser !== null) {
     user = users[authedUser]
   }
-  // eslint-disable-next-line array-callback-return
-  Object.values(questions).filter(question => {
-    if (user.answers.hasOwnProperty(question.id)) {
-      answered.push(question)
-    } else {
-      unanswered.push(question)
-    }
-  })
+  unanswered = Object.values(questions).filter(question =>
+    !users[authedUser].answers.hasOwnProperty(question.id)
+  ).sort((a, b) => b.timestamp - a.timestamp)
+
+  answered= Object.values(questions).filter(question =>
+    users[authedUser].answers.hasOwnProperty(question.id)
+  ).sort((a, b) => b.timestamp - a.timestamp)
   return {
     answered,
     unanswered,
