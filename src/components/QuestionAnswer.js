@@ -14,12 +14,14 @@ class QuestionAnswer extends Component {
   }
   answerQuestion = () => {
     const { option } = this.state
-    const { authedUser, question } = this.props
+    const { authedUser, questions, id } = this.props
+    const question = questions[id]
     this.props.dispatch(handleAnswerQuestion( authedUser, question.id, option ))
     this.props.history.push(`/results/${question.id}`)
   }
   render () {
-    const { question } = this.props;
+    const { id, questions } = this.props;
+    const question = questions[id]
     return (
       <div className="question">
         <h4 className="text-center">Would You Rather </h4>
@@ -52,11 +54,13 @@ class QuestionAnswer extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser, questions, users }) {
+function mapStateToProps ({ authedUser, questions, users }, props) {
+  const { id } = props.match!==undefined? props.match.params : undefined
   return {
     authedUser,
     questions,
-    users
+    users,
+    id
   }
 }
 

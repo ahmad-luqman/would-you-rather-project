@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import QuestionAnswer from './QuestionAnswer'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class Dashboard extends Component {
   componentDidMount(){
@@ -49,7 +48,15 @@ class Dashboard extends Component {
             <br />
             <div>
               {unanswered.map(question => (
-                  <QuestionAnswer key={question.id} question={question}/>
+                <div className="question">
+                  <p>{question.author} asks - Would you rather</p>
+                  <div>{question.optionOne.text}{user.answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
+                  <div>{question.optionTwo.text}{user.answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
+                  <br />
+                  <NavLink to={`/questions/${question.id}`} key={question.id}>
+                    Answer Question
+                  </NavLink>
+                </div>
                 ))}
             </div>
           </div>
@@ -59,12 +66,15 @@ class Dashboard extends Component {
             <br />
             <div>
               {answered.map(question => (
-                  <Link to={`/results/${question.id}`} key={question.id} className="question">
-                    {question.author} asks - Would you rather
+                  <div className="question">
+                    <p>{question.author} asks - Would you rather</p>
                     <div>{question.optionOne.text}{user.answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
                     <div>{question.optionTwo.text}{user.answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
                     <br />
-                  </Link>
+                    <NavLink to={`/results/${question.id}`} key={question.id}>
+                      View Poll
+                    </NavLink>
+                  </div>
                 ))}
             </div>
           </div>
