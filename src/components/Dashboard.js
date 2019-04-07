@@ -77,7 +77,7 @@ class Dashboard extends Component {
                     <div>{question.optionOne.text}{users[question.author].answers[question.id] === 'optionOne'?' THIS' : ' '}</div>
                     <div>{question.optionTwo.text}{users[question.author].answers[question.id] === 'optionTwo'?' THIS' : ' '}</div>
                     <br />
-                    <NavLink to={`/results/${question.id}`} key={question.id}>
+                    <NavLink to={`/questions/${question.id}`} key={question.id}>
                       View Poll
                     </NavLink>
                   </div>

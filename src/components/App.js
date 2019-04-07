@@ -7,8 +7,7 @@ import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
 import Dashboard from './Dashboard'
 import LoadingBar from 'react-redux-loading'
-import QuestionAnswer from './QuestionAnswer'
-import QuestionResults from './QuestionResults'
+import QuestionDetails from './QuestionDetails'
 import Signout from './Signout'
 import ErrorPage from './ErrorPage';
 
@@ -30,8 +29,7 @@ class App extends Component {
                   <Route path='/leaderboard' exact component={LeaderBoard} />
                   <Route path='/add' exact component={NewQuestion} />
                   <Route path='/dashboard' exact component={Dashboard} />
-                  <Route path='/questions/:id' exact component={QuestionAnswer} />
-                  <Route path='/results/:id' exact component={QuestionResults} />
+                  <Route path='/questions/:id' exact component={QuestionDetails} />
                   <Route path='/signout' exact component={Signout} />
                   <Route path='*' component={ErrorPage} />
                 </Switch>

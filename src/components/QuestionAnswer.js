@@ -19,7 +19,7 @@ class QuestionAnswer extends Component {
     const { authedUser, questions, id } = this.props
     const question = questions[id]
     this.props.handleAnswerQuestion( authedUser, question.id, option )
-    this.props.history.push(`/results/${question.id}`)
+    this.props.history.push(`/questions/${question.id}`)
   }
   render () {
     const { id, questions } = this.props;

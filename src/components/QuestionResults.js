@@ -2,10 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ProgressBar from './ProgressBar'
 import Nav from './Nav'
+import ErrorPage from './ErrorPage'
+import { withRouter } from 'react-router-dom'
+
 
 const QuestionResults = (props) => {
   const { authedUser, id, questions, users } = props
   const question = questions[id]
+  if(question === undefined){
+    return(<ErrorPage />);
+  }
   const totalCount = question.optionOne.votes.length + question.optionTwo.votes.length
   const optionOneCount = question.optionOne.votes.length
   const optionTwoCount = question.optionTwo.votes.length
@@ -47,7 +53,7 @@ const QuestionResults = (props) => {
 }
 
 function mapStateToProps ({ authedUser, questions, users }, props) {
-  const { id } = props.match.params
+  const { id } = props.match!==undefined? props.match.params : undefined
   return {
     authedUser,
     id,
@@ -56,4 +62,4 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
   }
 }
 
-export default connect(mapStateToProps)(QuestionResults)
+export default withRouter(connect(mapStateToProps)(QuestionResults))
