@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
 
 class Avatar extends Component {
   render() {
     if (this.props.authedUser === null) {
-      return <Redirect to='/signin' />
+      return <Redirect
+      to={{
+        pathname: "/signin",
+        state: { referrer: this.props.location.pathname }
+      }}
+    />
     }
     const { authedUser, users } = this.props
     return (
@@ -24,4 +29,4 @@ function mapStateToProps ({ authedUser, users }) {
   }
 }
 
-export default connect(mapStateToProps)(Avatar)
+export default withRouter(connect(mapStateToProps)(Avatar))

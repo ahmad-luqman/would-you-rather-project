@@ -6,7 +6,12 @@ import Avatar from './Avatar'
 class Nav extends Component {
   render(){
     if (this.props.authedUser === null) {
-      return <Redirect to='/signin' />
+      return <Redirect
+      to={{
+        pathname: "/signin",
+        state: { referrer: this.props.location.pathname }
+      }}
+    />
     }
     return (
     <nav className='navbar navbar-expand-lg navbar navbar-dark bg-primary'>

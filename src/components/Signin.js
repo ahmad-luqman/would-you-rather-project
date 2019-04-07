@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { authenticateUser } from '../actions/shared'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
 
 class Signin extends Component {
@@ -16,13 +16,19 @@ class Signin extends Component {
   }
   authenticate = (e) => {
     this.props.login(this.state.selectedUser)
-    this.props.history.push("/dashboard")
   }
   render () {
-    const { users } = this.props;
+    const { authedUser, users } = this.props;
     const { selectedUser } = this.state
     return (
-      <div className="row ">
+      (authedUser) ?
+      <Redirect
+            to={{
+                pathname: (this.props.location.state) ? this.props.location.state.referrer : "/dashboard"
+            }}
+        />
+        :
+        <div className="row ">
         <form onSubmit={this.authenticate} className="col-md-12">
           <h1 className="display-4 jumbotron bg-white text-center">
             Would<br />You<br/>Rather
