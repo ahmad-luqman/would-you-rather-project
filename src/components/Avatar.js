@@ -5,7 +5,8 @@ import { withRouter, Redirect } from 'react-router-dom'
 
 class Avatar extends Component {
   render() {
-    if (this.props.authedUser === null) {
+    const { authedUser, users } = this.props
+    if (authedUser === null) {
       return <Redirect
       to={{
         pathname: "/signin",
@@ -13,7 +14,6 @@ class Avatar extends Component {
       }}
     />
     }
-    const { authedUser, users } = this.props
     return (
       <img src={users[authedUser].avatarURL}
            alt='avatar'

@@ -3,6 +3,7 @@ import { handleAnswerQuestion } from '../actions/shared'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Nav from './Nav'
+import ErrorPage from './ErrorPage'
 
 class QuestionAnswer extends Component {
   state = {
@@ -23,6 +24,9 @@ class QuestionAnswer extends Component {
   render () {
     const { id, questions } = this.props;
     const question = questions[id]
+    if(question === undefined){
+      return(<ErrorPage />);
+    }
     return (
       <div>
         <Nav />
