@@ -88,3 +88,15 @@ li {
   border-radius: inherit;
   transition: width .2s ease-in;
 }
+
+.result-owner.true {
+  background: #e7bdf0
+}
+
+.result-owner {
+  background: #ffffff
+}
+
+.white-text {
+  color: #ffffff
+}
