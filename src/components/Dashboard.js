@@ -30,24 +30,22 @@ class Dashboard extends Component {
     return (
       <div>
         <Nav />
-        <nav className='navbar navbar-expand-lg navbar-light bg-primary'>
-          <ul className='navbar-nav'>
+          <ul className='nav nav-tabs'>
             <li
               onClick={this.setQuestionUnanswered}
               className='nav-item'>
-                <div activeClassName='active' className="nav-link" href="#">
+                <div className={`nav-link ${ questionUnanswered ? 'active' : ''}`} href="#">
                   Unanswered Questions
                 </div>
             </li>
             <li
               onClick={this.setQuestionAnswered}
               className='nav-item'>
-                <div activeClassName='active' className="nav-link" href="#">
+                <div className={`nav-link ${!questionUnanswered ? 'active' : ''}`} href="#">
                   Answered Questions
                 </div>
             </li>
           </ul>
-        </nav>
         {questionUnanswered?
           <div>
             <div>
