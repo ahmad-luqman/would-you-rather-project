@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { authenticateUser } from '../actions/shared'
 
-class Logout extends Component {
-  componentWillMount () {
-    this.props.dispatch(authenticateUser(null))
-  }
-  render () {
-    return <Redirect to='/' />
-  }
+function Logout (props) {
+  props.logout()
+  
+  return <Redirect to='/' />
 }
 
-export default connect()(Logout)
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(authenticateUser(null))
+})
+
+export default connect(null, mapDispatchToProps)(Logout)

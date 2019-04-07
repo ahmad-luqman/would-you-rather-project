@@ -15,7 +15,7 @@ import ErrorPage from './ErrorPage';
 
 class App extends Component {
   componentDidMount(){
-    this.props.dispatch(handleInitialData())
+    this.props.initialData()
   }
   render() {
     return (
@@ -44,10 +44,14 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  initialData: () => dispatch(handleInitialData())
+})
+
 function mapStateToProps ({ authedUser }) {
   return {
     authedUser
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

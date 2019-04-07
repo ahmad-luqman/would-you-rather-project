@@ -17,7 +17,7 @@ class QuestionAnswer extends Component {
     const { option } = this.state
     const { authedUser, questions, id } = this.props
     const question = questions[id]
-    this.props.dispatch(handleAnswerQuestion( authedUser, question.id, option ))
+    this.props.handleAnswerQuestion( authedUser, question.id, option )
     this.props.history.push(`/results/${question.id}`)
   }
   render () {
@@ -58,6 +58,11 @@ class QuestionAnswer extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  handleAnswerQuestion: (authedUser, qid, option) =>
+    dispatch(handleAnswerQuestion( authedUser, qid, option ))
+})
+
 function mapStateToProps ({ authedUser, questions, users }, props) {
   const { id } = props.match!==undefined? props.match.params : undefined
   return {
@@ -68,4 +73,4 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(QuestionAnswer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QuestionAnswer))

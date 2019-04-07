@@ -15,7 +15,7 @@ class Signin extends Component {
     });
   }
   authenticate = (e) => {
-    this.props.dispatch(authenticateUser(this.state.selectedUser))
+    this.props.login(this.state.selectedUser)
     this.props.history.push("/dashboard")
   }
   render () {
@@ -51,6 +51,10 @@ class Signin extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  login: (user) => dispatch(authenticateUser(user))
+})
+
 function mapStateToProps({authedUser, users}) {
   //const userProps = Object.keys(users)
   return {
@@ -59,4 +63,4 @@ function mapStateToProps({authedUser, users}) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Signin))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signin))

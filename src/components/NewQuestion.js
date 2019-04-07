@@ -9,7 +9,7 @@ class NewQuestion extends Component {
     e.preventDefault()
     let optOne = e.target[0].value
     let optTwo = e.target[1].value
-    this.props.dispatch(addQuestionAction(this.props.authedUser, optOne, optTwo))
+    this.props.addQuestionAction(this.props.authedUser, optOne, optTwo)
     this.props.history.push("/dashboard")
   }
   render() {
@@ -36,6 +36,11 @@ class NewQuestion extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  addQuestionAction: (authedUser, optionOne, optionTwo) =>
+    dispatch(addQuestionAction(authedUser, optionOne, optionTwo))
+})
+
 function mapStateToProps ({ authedUser, questions }) {
   return {
       authedUser,
@@ -43,4 +48,4 @@ function mapStateToProps ({ authedUser, questions }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(NewQuestion))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewQuestion))
